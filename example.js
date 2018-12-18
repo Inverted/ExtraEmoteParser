@@ -14,45 +14,53 @@ function appendEmote(emote, container) {
   container.appendChild(e);
 }
 
+/**
+ * Fetch global emotes
+ */
+const ffz = new FFZ();
+fetchGlobalEmotes(ffz, "#ffzGlobalEmotes");
+const bttv = new BTTV();
+fetchGlobalEmotes(bttv, "#bttvGlobalEmotes");
+const twitch = new Twitch();
+fetchGlobalEmotes(twitch, "#twitchGlobalEmotes");
+
+/**
+ * Input channel to fetch its emotes
+ */
+const channelInput = document.querySelector("#channelName");
+document
+  .querySelector("#fetchEmotes")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+    const channel = channelInput.value;
+    fetchChannelEmotes(ffz, channel, "#ffzChannelEmotes");
+    fetchChannelEmotes(bttv, channel, "#bttvChannelEmotes");
+    fetchChannelEmotes(twitch, channel, "#twitchChannelEmotes");
+  });
 // Example calls
 
-const ffz = new FFZ();
-ffz
-  .getGlobal()
-  .then(emotes => {
-    emotes.forEach(emote => {
-      appendEmote(emote, document.querySelector("#ffzEmotes"));
-      allEmotes.push(emote);
-    });
-  })
-  .catch(error => console.log(error));
+function fetchGlobalEmotes(service, container) {
+  document.querySelector(container).innerHTML = "";
+  service
+    .getGlobal()
+    .then(emotes => {
+      emotes.forEach(emote => {
+        appendEmote(emote, document.querySelector(container));
+        allEmotes.push(emote);
+      });
+    })
+    .catch(error => console.log(error));
+}
 
-ffz
-  .getChannel("gamesdonequick")
-  .then(emotes => {
-    emotes.forEach(emote => {
-      appendEmote(emote, document.querySelector("#ffzEmotes"));
-      allEmotes.push(emote);
-    });
-  })
-  .catch(error => console.log(error));
-
-
-const bttv = new BTTV();
-bttv.getGlobal().then(emotes => {
-  emotes.forEach(emote => {
-    appendEmote(emote, document.querySelector("#bttvGlobalEmotes"));
-    allEmotes.push(emote);
-  });
-});
-bttv
-  .getChannel("gamesdonequick")
-  .then(emotes => {
-    emotes.forEach(emote => {
-      appendEmote(emote, document.querySelector("#bttvChannelEmotes"));
-      allEmotes.push(emote);
-    });
-  })
-  .catch(() => {
-    console.log("No channel emotes found");
-  });
+function fetchChannelEmotes(service, channel, container) {
+  document.querySelector(container).innerHTML = "";
+  service
+    .getChannel(channel)
+    .then(emotes => {
+      emotes.forEach(emote => {
+        appendEmote(emote, document.querySelector(container));
+        allEmotes.push(emote);
+      });
+    })
+    .catch(error => console.log(error));
+}

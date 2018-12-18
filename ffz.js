@@ -34,7 +34,9 @@ class FFZ {
       .then(responseJSON => {
         return new Promise((resolve, reject) => {
           if (!responseJSON.sets) {
-            reject("Error retrieving emotes from FFZ");
+            reject(
+              "Error retrieving emotes from FFZ. Channel probably does not have custom emotes."
+            );
           } else {
             resolve(this.parseSets(responseJSON.sets, size));
           }

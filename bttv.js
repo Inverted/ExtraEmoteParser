@@ -34,7 +34,9 @@ class BTTV {
       .then(responseJSON => {
         return new Promise((resolve, reject) => {
           if (responseJSON.status != 200) {
-            reject();
+            reject(
+              "Error retrieving emotes from BTTV. Channel probably does not have custom emotes."
+            );
           } else {
             resolve(
               this.parseEmotes(
