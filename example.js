@@ -30,13 +30,14 @@ fetchGlobalEmotes(twitch, "#twitchGlobalEmotes");
 const channelInput = document.querySelector("#channelName");
 document
   .querySelector("#fetchEmotes")
-  .addEventListener("submit", function(event) {
+  .addEventListener("submit", event => {
     event.preventDefault();
     const channel = channelInput.value;
     fetchChannelEmotes(ffz, channel, "#ffzChannelEmotes");
     fetchChannelEmotes(bttv, channel, "#bttvChannelEmotes");
     fetchChannelEmotes(twitch, channel, "#twitchChannelEmotes");
   });
+
 // Example calls
 
 function fetchGlobalEmotes(service, container) {

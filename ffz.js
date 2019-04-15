@@ -1,5 +1,5 @@
 /**
- * Basic BetterTwitchTV class for retrieving and parsing their emotes API.
+ * Basic FrankerFaceZ class for retrieving and parsing their emotes API.
  */
 class FFZ {
   /**

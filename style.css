@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+form {
+  margin: 1em 0 -1em 1em;
+}
+main {
+  display: flex;
+  flex-flow: row no-wrap;
+}
+section {
+  padding: 1em;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0;
+  padding: 5px;
+}
+li:nth-child(even) {
+  background: #eee;
+}

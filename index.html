@@ -1,70 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Extra Twitch emotes</title>
-  </head>
-  <style type="text/css">
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    main {
-      display: flex;
-      flex-flow: row no-wrap;
-    }
-    section {
-      padding: 1em;
-    }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin: 5px 0;
-      padding: 5px;
-    }
-    li:nth-child(even) {
-      background: #eee;
-    }
-  </style>
-  <body>
-    <form id="fetchEmotes">
-      <label for="channelName">Channel name: </label>
-      <input type="text" name="channelName" id="channelName" />
-    </form>
-    <main>
-      <section>
-        <h3>BTTV Global emotes</h3>
-        <ul id="bttvGlobalEmotes"></ul>
-      </section>
-      <section>
-        <h3>BTTV Gamesdonequick emotes</h3>
-        <ul id="bttvChannelEmotes"></ul>
-      </section>
-      <section>
-        <h3>FFZ Global emotes</h3>
-        <ul id="ffzGlobalEmotes"></ul>
-      </section>
 
-      <section>
-        <h3>FFZ Gamesdonequick emotes</h3>
-        <ul id="ffzChannelEmotes"></ul>
-      </section>
-      <section>
-        <h3>Twitch Global emotes</h3>
-        <ul id="twitchGlobalEmotes"></ul>
-      </section>
-      <section>
-        <h3>Twitch Gamesdonequick emotes</h3>
-        <ul id="twitchChannelEmotes"></ul>
-      </section>
-    </main>
-    <script src="./bttv.js"></script>
-    <script src="./twitch.js"></script>
-    <script src="./ffz.js"></script>
-    <script src="./example.js"></script>
-  </body>
+<head>
+  <title>Twitch emote retriever</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<body>
+  <form id="fetchEmotes">
+    <label for="channelName">Channel name: </label>
+    <input type="text" name="channelName" id="channelName" />
+  </form>
+  <main>
+    <section>
+      <h3>BTTV Global emotes</h3>
+      <ul id="bttvGlobalEmotes"></ul>
+    </section>
+    <section>
+      <h3>BTTV Gamesdonequick emotes</h3>
+      <ul id="bttvChannelEmotes"></ul>
+    </section>
+    <section>
+      <h3>FFZ Global emotes</h3>
+      <ul id="ffzGlobalEmotes"></ul>
+    </section>
+
+    <section>
+      <h3>FFZ Gamesdonequick emotes</h3>
+      <ul id="ffzChannelEmotes"></ul>
+    </section>
+    <section>
+      <h3>Twitch Global emotes</h3>
+      <ul id="twitchGlobalEmotes"></ul>
+    </section>
+    <section>
+      <h3>Twitch Gamesdonequick emotes</h3>
+      <ul id="twitchChannelEmotes"></ul>
+    </section>
+  </main>
+  <script src="./bttv.js"></script>
+  <script src="./twitch.js"></script>
+  <script src="./ffz.js"></script>
+  <script src="./example.js"></script>
+</body>
+
 </html>

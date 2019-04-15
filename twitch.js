@@ -16,11 +16,22 @@ class Twitch {
    * @param {string} channel - The channel name on Twitch.
    */
   getChannel(channel) {
-    return this.getEmotes(
-      `https://api.twitch.tv/api/channels/${channel}/product`
-    );
+    fetch(`https://api.twitch.tv/kraken/users?login=${channel}`, {
+      headers: {
+        Accept: "application/vnd.twitchtv.v5+json",
+        "Client-ID": "kedrqjdeetks1emplt3tmofwv3cbcy"
+      }
+    })
+      .then(response => response.json())
+      .then(responseJSON => {
+        console.log(responseJSON);
+        return this.getEmotes(
+          `https://api.twitch.tv/kraken/channels/${
+          responseJSON.users[0]._id
+          }/products`
+        );
+      });
   }
-
   /**
    * Make API call and return a promise for the parsed result.
    * @param {string} url - The URL of the API.
@@ -28,6 +39,7 @@ class Twitch {
   getEmotes(url) {
     return fetch(url, {
       headers: {
+        Accept: "application/vnd.twitchtv.v5+json",
         "Client-ID": "kedrqjdeetks1emplt3tmofwv3cbcy"
       }
     })
@@ -35,6 +47,7 @@ class Twitch {
       .catch(error => console.error(error))
       .then(responseJSON => {
         return new Promise((resolve, reject) => {
+          console.log(responseJSON);
           if (!responseJSON.emoticons) {
             if (!responseJSON.emoticon_sets) {
               reject("Error retrieving emotes from Twitch");
