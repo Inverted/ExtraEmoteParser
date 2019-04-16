@@ -21,8 +21,6 @@ const ffz = new FFZ();
 fetchGlobalEmotes(ffz, "#ffzGlobalEmotes");
 const bttv = new BTTV();
 fetchGlobalEmotes(bttv, "#bttvGlobalEmotes");
-const twitch = new Twitch();
-fetchGlobalEmotes(twitch, "#twitchGlobalEmotes");
 
 /**
  * Input channel to fetch its emotes
@@ -35,7 +33,6 @@ document
     const channel = channelInput.value;
     fetchChannelEmotes(ffz, channel, "#ffzChannelEmotes");
     fetchChannelEmotes(bttv, channel, "#bttvChannelEmotes");
-    fetchChannelEmotes(twitch, channel, "#twitchChannelEmotes");
   });
 
 // Example calls
